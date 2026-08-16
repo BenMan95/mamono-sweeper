@@ -5,7 +5,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JFrame;
+import javax.swing.JPopupMenu;
 import javax.swing.Timer;
 
 public class App {
@@ -24,6 +26,13 @@ public class App {
         BoardPanel boardPanel = new BoardPanel(model);
         FooterPanel footerPanel = new FooterPanel(model);
         GameController controller = new GameController(model);
+        JPopupMenu boardMenu = new JPopupMenu();
+        JCheckBoxMenuItem countdownToggle = new JCheckBoxMenuItem("Countdown Mode");
+        countdownToggle.addActionListener((_) -> {
+            model.setCountdownMode(countdownToggle.getState());
+            frame.repaint();
+        });
+        boardMenu.add(countdownToggle);
 
         boardPanel.addMouseListener(new MouseAdapter() {
             @Override
@@ -31,6 +40,11 @@ public class App {
                 int cellSize = SCALE * Config.CELL_SIZE;
                 int x = e.getX() / cellSize;
                 int y = e.getY() / cellSize;
+
+                if (e.getButton() == MouseEvent.BUTTON3 && e.isShiftDown()) {
+                    boardMenu.show(boardPanel, e.getX(), e.getY());
+                    return;
+                }
 
                 if (e.getButton() == MouseEvent.BUTTON1)
                     controller.handleLeftClick(x, y);

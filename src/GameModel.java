@@ -8,6 +8,7 @@ public class GameModel {
     public final int scale;
     public final int width;
     public final int height;
+    private boolean countdownMode;
 
     private final int[] enemies;
     private final int[] marks;
@@ -215,6 +216,14 @@ public class GameModel {
 
     public int getExp() {
         return exp;
+    }
+
+    public boolean isCountdownMode() {
+        return countdownMode;
+    }
+
+    public void setCountdownMode(boolean countdownMode) {
+        this.countdownMode = countdownMode;
     }
 
     public Instant getStart() {

@@ -52,7 +52,7 @@ public class BoardPanel extends JPanel {
             return;
         }
 
-        int count = game.getAdjacentCount(x, y, true);
+        int count = game.getAdjacentCount(x, y, game.isCountdownMode());
         if (count != 0) {
             String countStr = String.valueOf(count);
             int pixelX = x * Config.CELL_SIZE + Config.CELL_SIZE / 2;
