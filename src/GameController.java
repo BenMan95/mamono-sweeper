@@ -42,7 +42,7 @@ public class GameController {
     public void handleRightClick(int x, int y) {
         game.assertCoordsValid(x, y);
         int currentMark = game.getMark(x, y);
-        int newMark = (currentMark + 1) % Config.MAX_LEVEL;
+        int newMark = (currentMark + 1) % (Config.MAX_LEVEL + 1);
         game.setMark(newMark, x, y);
     }
 
