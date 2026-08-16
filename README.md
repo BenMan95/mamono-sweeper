@@ -4,4 +4,5 @@ An implementation of Mamono Sweeper, a minesweeper variant, in Java. To run, jus
 
 Includes some extra features:
 - Chording with middle click
-- Countdown display mode (coming soon)
+- Countdown display mode
+  - Enable from menu accessed by shift + right click

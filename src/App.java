@@ -26,13 +26,13 @@ public class App {
         BoardPanel boardPanel = new BoardPanel(model);
         FooterPanel footerPanel = new FooterPanel(model);
         GameController controller = new GameController(model);
-        JPopupMenu boardMenu = new JPopupMenu();
+        JPopupMenu popupMenu = new JPopupMenu();
         JCheckBoxMenuItem countdownToggle = new JCheckBoxMenuItem("Countdown Mode");
         countdownToggle.addActionListener((_) -> {
             model.setCountdownMode(countdownToggle.getState());
             frame.repaint();
         });
-        boardMenu.add(countdownToggle);
+        popupMenu.add(countdownToggle);
 
         boardPanel.addMouseListener(new MouseAdapter() {
             @Override
@@ -42,7 +42,7 @@ public class App {
                 int y = e.getY() / cellSize;
 
                 if (e.getButton() == MouseEvent.BUTTON3 && e.isShiftDown()) {
-                    boardMenu.show(boardPanel, e.getX(), e.getY());
+                    popupMenu.show(boardPanel, e.getX(), e.getY());
                     return;
                 }
 
